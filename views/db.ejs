@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="container">
+    <h2>Database Results from Users</h2>
+    <ul>
+        <% results.forEach(function(r) { %>
+            <li><%= r.User_id %> "  " <%= r.First_name %> "  " <%= r.Last_name%></li>
+        <% }); %>
+    </ul>
+</div>
+</body>
+</html>
