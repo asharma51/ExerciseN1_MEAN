@@ -4,12 +4,24 @@
 </head>
 <body>
 <div class="container">
-    <h2>Database Results from Users</h2>
-    <ul>
+    <h2>Database Results from collection Users</h2>
+    <table>
+        <tr>
+            <th>User Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+
+<!--        iterate through all user records to display user id, first name, last name-->
         <% results.forEach(function(r) { %>
-            <li><%= r.User_id %> - <%= r.First_name %> - <%= r.Last_name%></li>
-        <% }); %>
-    </ul>
+        <tr>
+            <td><%= r.User_id %></td>
+            <td><%= r.First_name %></td>
+            <td><%= r.Last_name%></td>
+        </tr>
+        <% });%>
+
+    </table>
 </div>
 </body>
 </html>

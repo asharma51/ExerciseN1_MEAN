@@ -8,19 +8,20 @@ router.get('/', function(req, res, next) {
 
 //connect with mongodb and fetch records from Users
 var mongodb = require('mongodb');
-var DATABASE_URL = 'mongodb://heroku_vd9bt3bv:4e0nsqh8brr2521d3joq1bqq3t@ds215380.mlab.com:15380/heroku_vd9bt3bv';
+const DATABASE_URL = 'mongodb://asharma51:a1s2d3f4@ds215380.mlab.com:15380/heroku_vd9bt3bv';
 
-router.get('/db', function (request, response) {
-  mongodb.MongoClient.connect(DATABASE_URL, function(err, db) {
+router.get('/db', function (request, response, next) {
+  mongodb.MongoClient.connect(DATABASE_URL,  function(err, client) {
     if(err) throw err;
+    var db = client.db('heroku_vd9bt3bv');
     var Users = db.collection('Users');
     Users.find({}).toArray(function(err,result){
       if(err) throw err;
       response.render('db', {results: result});
     });
 
-    //close connection when your app is terminating.
-    db.close(function (err) {
+    //close connection when app is terminating.
+    client.close(function (err) {
       if(err) throw err;
     });
 
